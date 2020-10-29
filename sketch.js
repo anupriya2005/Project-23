@@ -32,7 +32,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:3, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.4, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -40,9 +40,9 @@ function setup() {
 		isStatic:true
 	}
 
-	box1.createSprite(400,350,200,20);
-	box2.createSprite(390,340,20,100);
-	box3.createSprite(410,360,20,100);
+	box1= createSprite(400,650,200,20);
+	box2= createSprite(290,600,20,100);
+	box3= createSprite(500,600,20,100);
 
 	var box1_options={
 		isStatic:true
@@ -55,9 +55,9 @@ function setup() {
 	}
 	World.add(box1, box2, box3);
 	 
-	box1.shapeColor="red";
-	box2.shapeColor="red";
-	box3.shapeColor="red";
+	box1.shapeColor="blue";
+	box2.shapeColor="blue";
+	box3.shapeColor="blue";
 	//Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
  	World.add(world, ground);
@@ -65,7 +65,7 @@ function setup() {
 
 	Engine.run(engine);
 
-	console.log(object);
+	
   
 }
 
@@ -82,10 +82,8 @@ function draw() {
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
     // Look at the hints in the document and understand how to make the package body fall only on
-	packageBody.collide(ground);
-	Matter.Body.setStatic(packageSprite, false);
-	var packageBody= {
-		restitution: 1
-	}
+	
+	Matter.Body.setStatic(packageBody, false);
+	
   }
 }
